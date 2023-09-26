@@ -3,13 +3,14 @@
 
 using std::time,std::srand,std::setlocale;
 
+#define LIMIT_ASCII_MAX 125
 string Hashin::genFourBytesHash(){
     // 00000000-00000000-00000000-00000000
     std::string hashToReturn;
     srand(time(NULL));
     for(int i = 0; i = hashToReturn.size();i++){
         if((i + 1) % 8 == 0){
-            hashToReturn += rand() % 255; 
+            hashToReturn += rand() % LIMIT_ASCII_MAX; 
         }
         else{
             hashToReturn+= "-";
@@ -24,7 +25,7 @@ string Hashin::genEightBytesHash(){
     srand(time(NULL));
     for(int i = 0; i = hashToReturn.size();i++){
         if((i + 1) % 16 == 0){
-            hashToReturn += rand() % 255; 
+            hashToReturn += rand() % LIMIT_ASCII_MAX; 
         }
         else{
             hashToReturn+= "-";
@@ -39,7 +40,7 @@ string Hashin::genRandomHash(int len){
         string hash;
 
         for(int i = 0; i < len;i++){
-            hash += rand() % 255;
+            hash += rand() % LIMIT_ASCII_MAX;
         }
         return hash;
     }
